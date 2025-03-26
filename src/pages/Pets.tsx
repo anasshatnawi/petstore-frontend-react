@@ -69,7 +69,6 @@ export default function Pets() {
                 .filter((url) => url.trim() !== ""),
         });
 
-        fetchPets();
         setNewPet({
             name: "",
             category: "",
@@ -83,7 +82,6 @@ export default function Pets() {
         if (!id) return;
 
         await deletePet(id);
-        fetchPets();
     };
 
     const editPet = (pet: Pet): void => {
@@ -107,7 +105,6 @@ export default function Pets() {
                 .filter((url) => url.trim() !== ""),
         });
 
-        fetchPets();
         setEditingPet(undefined);
     };
 
@@ -117,7 +114,12 @@ export default function Pets() {
 
     return (
         <div className="container">
-            <h2>Pets</h2>
+            <div className="header">
+                <h2>Pets</h2>
+                <button onClick={fetchPets} className="refresh-button">
+                    Refresh Pets
+                </button>
+            </div>
 
             <ul className="list">
                 {pets.map((pet) => (

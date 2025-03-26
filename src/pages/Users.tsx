@@ -27,7 +27,6 @@ const UsersComponent: React.FC = () => {
     const handleCreateUser = (e: React.FormEvent) => {
         e.preventDefault();
         createUser(newUser).then(() => {
-            fetchUsers();
             setNewUser({
                 username: "",
                 firstname: "",
@@ -41,7 +40,7 @@ const UsersComponent: React.FC = () => {
 
     const handleDeleteUser = (id?: number) => {
         if (!id) return;
-        deleteUser(id).then(() => fetchUsers());
+        deleteUser(id);
     };
 
     const handleEditUser = (user: User) => {
@@ -53,7 +52,6 @@ const UsersComponent: React.FC = () => {
         if (!editingUser || !editingUser.id) return;
 
         updateUser(editingUser.id, editingUser).then(() => {
-            fetchUsers();
             setEditingUser(undefined);
         });
     };
@@ -80,7 +78,12 @@ const UsersComponent: React.FC = () => {
 
     return (
         <div className="container">
-            <h2>Users</h2>
+            <div className="header">
+                <h2>Users</h2>
+                <button onClick={fetchUsers} className="refresh-button">
+                    Refresh Users
+                </button>
+            </div>
 
             <ul className="list">
                 {users.map((user) => (

@@ -17,9 +17,15 @@ export default function Orders() {
     });
 
     useEffect(() => {
-        getOrders().then((data) => setOrders(data));
+        fetchOrders();
         getPets().then((data) => setPets(data));
     }, []);
+
+    const fetchOrders = async (): Promise<void> => {
+        const data = await getOrders();
+        setOrders(data);
+    };
+
     const createOrderSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -30,7 +36,6 @@ export default function Orders() {
 
         createOrder(newOrder)
             .then(() => {
-                getOrders().then((o) => setOrders(o));
                 setNewOrder({
                     petId: 0,
                     quantity: 1,
@@ -43,7 +48,7 @@ export default function Orders() {
     };
 
     const deleteOrderSubmit = (id?: number) => {
-        deleteOrder(id).then(() => getOrders().then((o) => setOrders(o)));
+        deleteOrder(id);
     };
 
     const editOrder = (order: Order) => {
@@ -56,7 +61,6 @@ export default function Orders() {
         if (!editingOrder || !editingOrder.id) return;
 
         updateOrder(editingOrder.id, editingOrder).then(() => {
-            getOrders().then((o) => setOrders(o));
             setEditingOrder(undefined);
         });
     };
@@ -96,7 +100,12 @@ export default function Orders() {
 
     return (
         <div className="container">
-            <h2>Orders</h2>
+            <div className="header">
+                <h2>Orders</h2>
+                <button onClick={fetchOrders} className="refresh-button">
+                    Refresh Pets
+                </button>
+            </div>
 
             <ul className="list">
                 {orders.map((order) => (
