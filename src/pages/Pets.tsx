@@ -155,6 +155,7 @@ export default function Pets() {
                     <form onSubmit={updatePetHandler} className="form">
                         <input
                             type="text"
+                            autoComplete="off"
                             value={editingPet.name}
                             onChange={handleEditingPetChange}
                             name="name"
@@ -173,6 +174,7 @@ export default function Pets() {
                         </select>
                         <input
                             type="text"
+                            autoComplete="off"
                             value={editingPet.tags}
                             onChange={handleEditingPetChange}
                             name="tags"
@@ -180,6 +182,7 @@ export default function Pets() {
                             required
                         />
                         <textarea
+                            autoComplete="off"
                             value={editingPet.photoUrls}
                             onChange={handleEditingPetChange}
                             name="photoUrls"
@@ -215,6 +218,7 @@ export default function Pets() {
                 <h3>Add New Pet</h3>
                 <form onSubmit={createPetHandler} className="form">
                     <input
+                        autoComplete="off"
                         value={newPet.name}
                         onChange={handleNewPetChange}
                         name="name"
@@ -235,6 +239,7 @@ export default function Pets() {
                         <option value="Bunny">Bunny</option>
                     </select>
                     <input
+                        autoComplete="off"
                         value={newPet.tags}
                         onChange={handleNewPetChange}
                         name="tags"
@@ -242,6 +247,7 @@ export default function Pets() {
                         required
                     />
                     <textarea
+                        autoComplete="off"
                         value={newPet.photoUrls}
                         onChange={handleNewPetChange}
                         name="photoUrls"

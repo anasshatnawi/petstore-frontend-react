@@ -156,6 +156,7 @@ export default function Orders() {
                         </select>
 
                         <input
+                            autoComplete="off"
                             value={editingOrder.quantity}
                             onChange={handleEditingOrderChange}
                             name="quantity"
@@ -165,6 +166,7 @@ export default function Orders() {
                         />
 
                         <input
+                            autoComplete="off"
                             value={
                                 editingOrder.shipDate
                                     ? new Date(editingOrder.shipDate)
@@ -237,6 +239,7 @@ export default function Orders() {
                     </select>
 
                     <input
+                        autoComplete="off"
                         value={newOrder.quantity}
                         onChange={handleNewOrderChange}
                         name="quantity"
@@ -246,6 +249,7 @@ export default function Orders() {
                     />
 
                     <input
+                        autoComplete="off"
                         value={newOrder.shipDate}
                         onChange={handleNewOrderChange}
                         name="shipDate"

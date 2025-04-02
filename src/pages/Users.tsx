@@ -85,69 +85,13 @@ const UsersComponent: React.FC = () => {
                 </button>
             </div>
 
-            <ul className="list">
-                {users.map((user) => (
-                    <li key={user.id} className="list-item">
-                        <div>
-                            <strong>{user.username}</strong>
-                            <br />
-                            {user.firstname} {user.lastname}
-                            <br />
-                            Email: {user.email}
-                            <br />
-                            Phone: {user.phone}
-                            <br />
-                            Status: {user.status}
-                        </div>
-                        <div className="button-group">
-                            <button
-                                className="edit-button"
-                                onClick={() => handleEditUser(user)}
-                            >
-                                Edit
-                            </button>
-                            <button
-                                className="delete-button"
-                                onClick={() => handleDeleteUser(user.id)}
-                            >
-                                Delete
-                            </button>
-                        </div>
-                    </li>
-                ))}
-            </ul>
-
-            {/* EDIT FORM */}
             {editingUser && (
                 <div className="form-container">
                     <h3>Edit User {editingUser.id}</h3>
                     <form onSubmit={handleUpdateUser} className="form">
                         <input
-                            type="text"
-                            value={editingUser.username}
-                            onChange={handleEditingUserChange}
-                            name="username"
-                            placeholder="Username"
-                            required
-                        />
-                        <input
-                            type="text"
-                            value={editingUser.firstname}
-                            onChange={handleEditingUserChange}
-                            name="firstname"
-                            placeholder="First Name"
-                            required
-                        />
-                        <input
-                            type="text"
-                            value={editingUser.lastname}
-                            onChange={handleEditingUserChange}
-                            name="lastname"
-                            placeholder="Last Name"
-                            required
-                        />
-                        <input
                             type="email"
+                            autoComplete="off"
                             value={editingUser.email}
                             onChange={handleEditingUserChange}
                             name="email"
@@ -156,6 +100,34 @@ const UsersComponent: React.FC = () => {
                         />
                         <input
                             type="text"
+                            autoComplete="off"
+                            value={editingUser.username}
+                            onChange={handleEditingUserChange}
+                            name="username"
+                            placeholder="Username"
+                            required
+                        />
+                        <input
+                            type="text"
+                            autoComplete="off"
+                            value={editingUser.firstname}
+                            onChange={handleEditingUserChange}
+                            name="firstname"
+                            placeholder="First Name"
+                            required
+                        />
+                        <input
+                            type="text"
+                            autoComplete="off"
+                            value={editingUser.lastname}
+                            onChange={handleEditingUserChange}
+                            name="lastname"
+                            placeholder="Last Name"
+                            required
+                        />
+                        <input
+                            type="text"
+                            autoComplete="off"
                             value={editingUser.phone}
                             onChange={handleEditingUserChange}
                             name="phone"
@@ -188,36 +160,12 @@ const UsersComponent: React.FC = () => {
                 </div>
             )}
 
-            {/* CREATE FORM */}
             <div className="form-container">
                 <h3>Create New User</h3>
                 <form onSubmit={handleCreateUser} className="form">
                     <input
                         type="text"
-                        value={newUser.username}
-                        onChange={handleNewUserChange}
-                        name="username"
-                        placeholder="Username"
-                        required
-                    />
-                    <input
-                        type="text"
-                        value={newUser.firstname}
-                        onChange={handleNewUserChange}
-                        name="firstname"
-                        placeholder="First Name"
-                        required
-                    />
-                    <input
-                        type="text"
-                        value={newUser.lastname}
-                        onChange={handleNewUserChange}
-                        name="lastname"
-                        placeholder="Last Name"
-                        required
-                    />
-                    <input
-                        type="email"
+                        autoComplete="off"
                         value={newUser.email}
                         onChange={handleNewUserChange}
                         name="email"
@@ -226,6 +174,34 @@ const UsersComponent: React.FC = () => {
                     />
                     <input
                         type="text"
+                        autoComplete="off"
+                        value={newUser.username}
+                        onChange={handleNewUserChange}
+                        name="username"
+                        placeholder="Username"
+                        required
+                    />
+                    <input
+                        type="text"
+                        autoComplete="off"
+                        value={newUser.firstname}
+                        onChange={handleNewUserChange}
+                        name="firstname"
+                        placeholder="First Name"
+                        required
+                    />
+                    <input
+                        type="text"
+                        autoComplete="off"
+                        value={newUser.lastname}
+                        onChange={handleNewUserChange}
+                        name="lastname"
+                        placeholder="Last Name"
+                        required
+                    />
+                    <input
+                        type="text"
+                        autoComplete="off"
                         value={newUser.phone}
                         onChange={handleNewUserChange}
                         name="phone"
@@ -249,6 +225,38 @@ const UsersComponent: React.FC = () => {
                     </button>
                 </form>
             </div>
+
+            <ul className="list">
+                {users.map((user) => (
+                    <li key={user.id} className="list-item">
+                        <div>
+                            <strong>{user.username}</strong>
+                            <br />
+                            {user.firstname} {user.lastname}
+                            <br />
+                            Email: {user.email}
+                            <br />
+                            Phone: {user.phone}
+                            <br />
+                            Status: {user.status}
+                        </div>
+                        <div className="button-group">
+                            <button
+                                className="edit-button"
+                                onClick={() => handleEditUser(user)}
+                            >
+                                Edit
+                            </button>
+                            <button
+                                className="delete-button"
+                                onClick={() => handleDeleteUser(user.id)}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };
